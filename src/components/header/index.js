@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link as ReactRouterLink } from "react-router-dom"
+import { 
+    Background, 
+    Container, 
+    Logo, 
+    ButtonLink, 
+    Feature, 
+    Text, 
+    FeatureCallOut, 
+    TextLink, 
+    Group, 
+    Picture, 
+    Dropdown, 
+    Profile, 
+    Search, 
+    SearchIcon, 
+    SearchInput,
+    PlayButton 
+} from "./styles/header"
 
-import { Background, Container, Logo, ButtonLink, Feature, Text, FeatureCallOut, TextLink, Group, Picture, Dropdown, Profile } from "./styles/header"
+
 
 export function Header({ bg=true, children, ...restProps }) {
     return bg ? <Background {... restProps}>{children}</Background> : children;
@@ -25,6 +43,24 @@ Header.Picture = function HeaderPicture({ src, ...restProps }) {
 
 Header.Profile = function HeaderProfile({ children, ...restProps }) {
     return <Profile {...restProps}>{children}</Profile>
+}
+
+Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
+    const [searchActive, setSearchActive] = useState(false);
+
+    return (
+        <Search {...restProps}>
+            <SearchIcon onClick={() => setSearchActive(setSearchActive => !setSearchActive)}>
+                <img src="/images/icons/search.png" alt="search"/>
+            </SearchIcon>
+            <SearchInput 
+                value={searchTerm} 
+                onChange={({ target }) => setSearchTerm(target.value)}
+                placeholder="Search films and series"
+                active={searchActive}
+            />
+        </Search>
+    )
 }
 
 Header.Group = function HeaderGroup({ children, ...restProps }) {
@@ -52,7 +88,9 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 }
 
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
-    return (
-            <ButtonLink {...restProps}>{children}</ButtonLink>
-        )
+    return  <ButtonLink {...restProps}>{children}</ButtonLink>
+}
+
+Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
+    return <PlayButton {...restProps}>{children}</PlayButton>
 }
