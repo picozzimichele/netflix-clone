@@ -15,7 +15,7 @@ export default function Player({ children, ...restProps }) {
 }
 
 Player.Video = function PlayerVideo({ src, ...restProps}) {
-    const { showPlayer, setShowPlayer} = useContext(PlayerContext)
+    const {showPlayer, setShowPlayer} = useContext(PlayerContext)
 
     return showPlayer ? ReactDOM.createPortal(
         <Overlay onClick={() => setShowPlayer(false)} {...restProps}>
