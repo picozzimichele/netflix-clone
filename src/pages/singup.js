@@ -46,7 +46,7 @@ export default function Singup() {
             <HeaderContainer>
                 <Form>
                     <Form.Title>Sign Up</Form.Title>
-                    {error && <Form.error>{error}</Form.error>}
+                    {error && <Form.Error>{error}</Form.Error>}
 
                     <Form.Base onSubmit={HandleSignup} method="POST">
                         <Form.Input 
