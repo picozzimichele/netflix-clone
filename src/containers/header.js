@@ -7,7 +7,7 @@ export function HeaderContainer({children}) {
     return (
         <Header>
             <Header.Frame>
-                <Header.Logo to={ROUTES.HOME} alt="Netflix" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png"/>
+                <Header.Logo to={ROUTES.HOME} alt="Netflix" src="/images/netflix.png"/>
                 <Header.ButtonLink to={ROUTES.SIGN_IN}>Sign In</Header.ButtonLink>
             </Header.Frame>
             {children}
